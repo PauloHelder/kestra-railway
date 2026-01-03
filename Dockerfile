@@ -24,7 +24,7 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=5 \
 # Correct entrypoint (must include 'kestra')
 #CMD ["server", "standalone", "--config", "/app/config/application.yaml"]
 # Forçamos o diretório de trabalho padrão
-WORKDIR /app
+WORKDIR /app/kestra
 
 # Removemos qualquer entrypoint herdado para evitar o erro "not found"
 ENTRYPOINT []
