@@ -20,14 +20,14 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=5 \
 # Removemos o ENTRYPOINT e usamos apenas o CMD em formato de texto
 #ENTRYPOINT []
 #CMD /app/kestra server standalone
-#ENTRYPOINT ["kestra"]
+#ENTRYPOINT []
 # Correct entrypoint (must include 'kestra')
 #CMD ["server", "standalone", "--config", "/app/config/application.yaml"]
 # Forçamos o diretório de trabalho padrão
 WORKDIR /app/kestra
 
 # Removemos qualquer entrypoint herdado para evitar o erro "not found"
-ENTRYPOINT []
+ENTRYPOINT ["kestra"]
 
 # O comando 'kestra' já está no PATH da imagem oficial
-CMD ["kestra", "server", "standalone"]
+CMD ["server", "standalone"]
