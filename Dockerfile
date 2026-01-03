@@ -15,11 +15,19 @@ EXPOSE 8080 8081
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=5 \
   CMD wget -qO- http://127.0.0.1:8081/health/readiness || exit 1
-FROM kestra/kestra:latest-full
+#FROM kestra/kestra:latest-full
 
 # Removemos o ENTRYPOINT e usamos apenas o CMD em formato de texto
 #ENTRYPOINT []
 #CMD /app/kestra server standalone
-ENTRYPOINT ["kestra"]
+#ENTRYPOINT ["kestra"]
 # Correct entrypoint (must include 'kestra')
-CMD ["server", "standalone", "--config", "/app/config/application.yaml"]
+#CMD ["server", "standalone", "--config", "/app/config/application.yaml"]
+# Forçamos o diretório de trabalho padrão
+WORKDIR /app
+
+# Removemos qualquer entrypoint herdado para evitar o erro "not found"
+ENTRYPOINT []
+
+# O comando 'kestra' já está no PATH da imagem oficial
+CMD ["kestra", "server", "standalone"]
