@@ -30,4 +30,4 @@ WORKDIR /app/kestra
 ENTRYPOINT ["kestra"]
 
 # O comando 'kestra' já está no PATH da imagem oficial
-CMD ["server", "standalone"]
+#CMD ["server", "standalone"]
